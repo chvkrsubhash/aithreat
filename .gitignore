@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+logs/
+.DS_Store
+*.log
+.vercel/
+.ipynb_checkpoints/
+data/*.csv
+!data/sample_traffic.csv

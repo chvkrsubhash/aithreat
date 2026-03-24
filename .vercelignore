@@ -1,0 +1,10 @@
+.venv
+__pycache__
+*.pyc
+logs/
+.git
+.gitignore
+node_modules
+.pytest_cache
+.vscode
+*.log

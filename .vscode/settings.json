@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "c:/Users/chvkr/Downloads/New folder (22)/.venv/Scripts/python.exe",
+    "python.analysis.extraPaths": [
+        "c:/Users/chvkr/Downloads/New folder (22)"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}

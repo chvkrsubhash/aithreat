@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ AI-Threat-Sentry | Real-Time Protection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="logo">🛡️ AI-THREAT-SENTRY <span class="accent">v2.0</span></div>
+        <div class="systime" id="clock">00:00:00</div>
+    </nav>
+
+    <div class="dashboard-grid">
+        <!-- Status Panel -->
+        <aside class="panel status-panel">
+            <h2>System Status</h2>
+            <div class="model-selector">
+                <label>Active Engine:</label>
+                <select id="model-select">
+                    {% for name in model_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-stats">
+            <!-- XAI & File Analysis -->
+
+            <div class="card xai-card">
+                <h2>Traffic Analysis & Explainability (SHAP)</h2>
+                <div class="analyze-controls">
+                    <input type="file" id="csv-file" accept=".csv">
+                    <button id="analyze-btn" class="ctrl-btn secondary">Analyze Sample</button>
+                    <button id="download-pdf-btn" class="ctrl-btn accent" style="display:none; margin-left:10px;">Download PDF Report</button>
+                    <div id="analysis-result"></div>
+                </div>
+                <div class="xai-grid">
+                    <div id="shap-container" class="shap-container" style="display:flex; flex-direction:column; gap:10px;">
+                        <p class="placeholder-text">Upload a CSV to generate global and local SHAP charts.</p>
+                    </div>
+                    <div class="xai-text-container">
+                        <div class="xai-box">
+                            <h3>Decision Path</h3>
+                            <pre id="decision-path" class="term-box">Awaiting analysis...</pre>
+                        </div>
+                        <div class="xai-box mt-1">
+                            <h3>Counterfactual Scenario</h3>
+                            <pre id="counterfactual" class="term-box" style="min-height: 80px;">Awaiting analysis...</pre>
+                        </div>
+                        <div class="xai-box mt-1">
+                            <h3>Feature Importance Correlation Matrix</h3>
+                            <table class="premium-table" style="margin-top: 0.5rem; background: rgba(0,0,0,0.6); border-radius: 8px;">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Feature</th>
+                                        <th>Model Imp.</th>
+                                        <th>SHAP Imp.</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="top-features-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Metrics Table -->
+            <div class="card metrics-card" id="metrics-card" style="display: none;">
+                <h2>🎯 Live Sample Evaluation</h2>
+                <div class="table-container">
+                    <table id="metrics-table" class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Model Engine</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="metrics-body">
+                            <!-- Rows populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
