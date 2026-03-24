@@ -22,10 +22,6 @@ RUN pip install --no-cache-dir gunicorn
 # Copy all application files
 COPY . .
 
-# Hugging Face Spaces expects port 7860
-ENV PORT=7860
-EXPOSE 7860
-
 # Start application
-# use gunicorn for production
-CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--timeout", "300", "app:app"]
+# Railway/Cloud services will override the PORT env var
+CMD gunicorn --bind 0.0.0.0:$PORT --timeout 300 app:app
