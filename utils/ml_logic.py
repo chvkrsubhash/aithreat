@@ -82,11 +82,11 @@ def get_shap_explanations(model_name, original_df):
         
         plots = {}
         
-        explainer_path = os.path.join(config.MODEL_DIR, 'shap_explainer.pkl')
-        if os.path.exists(explainer_path):
-            explainer = joblib.load(explainer_path)
+        if model_name in EXPLAINERS:
+            explainer = EXPLAINERS[model_name]
         else:
             explainer = shap.Explainer(model)
+            EXPLAINERS[model_name] = explainer
             
         # 1. Local Waterfall Plot
         shap_values_local = explainer(X_local)
