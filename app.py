@@ -98,7 +98,7 @@ def download_pdf():
                 io.BytesIO(pdf_content),
                 mimetype='application/pdf',
                 as_attachment=True,
-                download_name='AI-THREAT_Analysis_Report.pdf'
+                download_name='AI-Threat_Analysis.pdf'
             )
         else:
             return jsonify({"error": "Failed to generate PDF"}), 500

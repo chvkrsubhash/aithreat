@@ -7,7 +7,7 @@ import os
 # Server Settings
 HOST = '0.0.0.0'
 PORT = 14094
-DEBUG = True
+DEBUG = False
 
 # Model Settings
 MODEL_DIR = 'models'

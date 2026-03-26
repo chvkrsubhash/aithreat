@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `NIDS_Report_${new Date().getTime()}.pdf`;
+                a.download = `AI-Threat_Analysis_${new Date().getTime()}.pdf`;
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
